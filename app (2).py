@@ -1,27 +1,3 @@
-"""
-GenAI Writing Assistant
-=========================
-A small tool with two modes, both built on PROMPT ENGINEERING techniques
-(not just "call an API and hope"):
-
-  1. Blog Outline Generator — give it a topic, get a structured outline.
-  2. Message Rewriter — paste a rough email/message + a target tone, get a
-     polished rewrite.
-
-Both modes use FEW-SHOT PROMPTING: instead of just asking the model to do
-the task, we show it 1-2 worked examples first, so it learns the exact
-format/style we want before it generates anything. This is a core prompt
-engineering technique — it consistently improves output quality and
-format-consistency compared to a plain "zero-shot" instruction.
-
-Before running, set your FREE Groq API key (get one at
-https://console.groq.com/keys — no credit card needed):
-    $env:GROQ_API_KEY="gsk_..."     (Windows PowerShell)
-    export GROQ_API_KEY="gsk_..."   (Mac/Linux)
-
-Then run:
-    python app.py
-"""
 
 import os
 from groq import Groq
