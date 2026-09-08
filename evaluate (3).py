@@ -1,37 +1,7 @@
-"""
-GenAI Writing Assistant — Evaluation
-=======================================
-Unlike the RAG project (where "correct" meant a keyword either showed up or
-didn't), writing quality has no single right answer. So this script uses a
-different, equally legitimate technique: LLM-AS-A-JUDGE.
-
-We generate outputs with the assistant, then make a SEPARATE call asking the
-model to score its own output against clear criteria (1-5 scale) and explain
-why. This is a real, widely-used evaluation technique for generative text —
-worth naming explicitly if asked about it in an interview.
-
-This script measures three things:
-  1. Tone accuracy — for message rewrites, does the output actually match
-     the requested tone? (LLM-judged, 1-5)
-  2. Meaning preservation — does the rewrite keep the original facts/intent
-     intact, not drift or hallucinate new content? (LLM-judged, 1-5)
-  3. Outline structure compliance — for blog outlines, cheap structural
-     checks (no API call needed): does it have a title? enough sections?
-
-Before running, make sure GROQ_API_KEY is set (see app.py).
-
-Then run:
-    python evaluate.py
-"""
-
 import json
 import re
 import time
 from app import get_client, generate_blog_outline, rewrite_message, MODEL
-
-# ---------------------------------------------------------------------------
-# Test data
-# ---------------------------------------------------------------------------
 
 REWRITE_TEST_SET = [
     {
